@@ -11,11 +11,11 @@
 // Converts a fraction formatted as X/Y to eighths
 int duration(string fraction)
 {
-    int num=atoi(&fraction[0]);
-    int denum=atoi(&fraction[3]);
-    if(num>0&&denum>0&&(denum%2==0))
+    int number1=atoi(&fraction[0]);
+    int number2=atoi(&fraction[3]);
+    if(number1>0&&number2>0&&(number2%2==0))
     {
-        return (float) (num/denum);
+        return (float) (number1/number2);
     }
     else
     {
@@ -25,51 +25,51 @@ int duration(string fraction)
 // Calculates frequency (in Hz) of a note
 int frequency(string note)
 {
-    int semitone;
+    int song;
     char NOTES=note[0];
     int OCTAVES=note[strlen(note)- 1]- 48;
     if(NOTES=='C')
     {
-        semitone=1;
+        song=1;
     }
     if(NOTES=='D')
     {
-        semitone=3;
+        song=3;
     }
     if(NOTES=='E')
     {
-        semitone=5;
+        Song=5;
     }
     if(NOTES=='F')
     {
-        semitone=7;
+        song=7;
     }
     if(NOTES=='G')
     {
-        semitone=9;
+        song=9;
     }
     if(NOTES=='A')
     {
-        semitone=11;
+        song=11;
     }
     if(NOTES=='B')
     {
-        semitone=13;
+        song=13;
     }
     if(note[1]=='#')
     {
-        semitone++;
+        song++;
     }
     if(note[1]=='b')
     {
-        semitone--;
+        song--;
     }
 
 //calcul frequency
 /*
 440*(2^(n/12))
 */
-    float freq= 440 * (powf(2,(semitone- 10/ (float) 12)));
+    float freq= 440 * (powf(2,(song- 10/ (float) 12)));
     return round (freq * (powf(2, OCTAVES- 4)));
 }
 
